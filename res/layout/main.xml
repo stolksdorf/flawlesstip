@@ -2,6 +2,7 @@
 
 <RelativeLayout 
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:screenOrientation="portrait"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent">
 
@@ -25,7 +26,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="35dp"
 				android:textColor="#FFFFFF"
@@ -59,7 +60,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="15dp"
 				android:textColor="#999999"
@@ -88,7 +89,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="15dp"
 				android:textColor="#999999"
