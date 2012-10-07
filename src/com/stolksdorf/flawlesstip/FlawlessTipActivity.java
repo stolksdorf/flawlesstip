@@ -12,14 +12,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class FlawlessTipActivity extends Activity {
 	
-	
-	EditText cost;
+	EditText cost_textbox;
 	Spinner tip_spinner;
 	Spinner amount_spinner;
 	
+	TextView final_tip_percentage;
+	TextView final_cost ;
+	TextView final_tip_amount;	
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -27,10 +30,15 @@ public class FlawlessTipActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
+		//Get Text Views
+		final_tip_percentage = (TextView) findViewById(R.id.final_tip_percentage);
+		final_tip_amount= (TextView) findViewById(R.id.final_tip_amount);
+		final_cost = (TextView) findViewById(R.id.final_cost);
+		
 		
 		//Cost Text Box
-		cost = (EditText) findViewById(R.id.cost);
-		cost.addTextChangedListener(new TextWatcher(){
+		cost_textbox= (EditText) findViewById(R.id.cost);
+		cost_textbox.addTextChangedListener(new TextWatcher(){
 			@Override
 	        public void onTextChanged(CharSequence s, int start, int before, int count){}
 			@Override
@@ -42,7 +50,7 @@ public class FlawlessTipActivity extends Activity {
 	    });
 		
 		
-		//Tip Spinner
+		//Tip Spinner Events
 		tip_spinner = (Spinner) findViewById(R.id.tip_percentage);
 		ArrayAdapter<CharSequence> tipAdapter = ArrayAdapter.createFromResource(this,
 		         R.array.tip_array, android.R.layout.simple_spinner_item);
@@ -56,21 +64,27 @@ public class FlawlessTipActivity extends Activity {
 				updateLayout();				
 			}
 		});
-		
-		
+				
+		//Amount Spinner Events
 		amount_spinner = (Spinner) findViewById(R.id.round_amount);
 		ArrayAdapter<CharSequence> roundAdapter = ArrayAdapter.createFromResource(this,
 		         R.array.round_array, android.R.layout.simple_spinner_item);
 		roundAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		amount_spinner.setAdapter(roundAdapter);
 		amount_spinner.setSelection(1);
+		amount_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		    public void onNothingSelected(AdapterView<?> parent) {}
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2, long arg3) {
+				updateLayout();				
+			}
+		});
 	}
 	
 	
 	public float getCost(){
-		return Float.parseFloat(cost.getText().toString());
-	}
-	
+		return Float.parseFloat(cost_textbox.getText().toString());
+	}	
 	
 	public float getTipPercentage(){
 		Resources res = getResources();
@@ -82,18 +96,38 @@ public class FlawlessTipActivity extends Activity {
 		return Float.parseFloat(amount_spinner.getSelectedItem().toString());
 	}
 	
+	public float roundToBest(float value, float target){
+		return (float)(Math.round(value/ target) * target);
+	}
+	
 	
 	
 	public void updateLayout(){
-		String result = "";
+		String fc = "$0.00";
+		String ftp = "0.00%";
+		String fta = "$0.00";
 		try{ 
-			result = Float.toString(getRoundAmount());
+			 float roundAmount = getRoundAmount();
+			 float tipPercentage = getTipPercentage();
+			 float cost = getCost();
+			 
+			 float totalRounded = roundToBest(cost * (1 + tipPercentage), roundAmount);
+			 float finalTipPercentage = (totalRounded / cost - 1)*100;
+			 float finalTipAmount = totalRounded - cost;
+			 
+			 fc = "$" + String.format("%.2f",totalRounded);
+			 ftp = String.format("%.2f",finalTipPercentage) + "%";
+			 fta = "$" + String.format("%.2f",finalTipAmount);		
+			
 		}catch(Exception E){
-			result = "nope";
+			fc = "$0.00";
+			ftp = "0.00%";
+			fta = "$0.00";
 		}		
 		
-		
-		Log.d("FlawlessTip", result);
+		final_tip_percentage.setText(ftp);
+		final_tip_amount.setText(fta);
+		final_cost.setText(fc);
 		
 	}
 }

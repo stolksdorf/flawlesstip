@@ -21,11 +21,9 @@
         <item>20%</item>
     </string-array>
     
-
-    
     <string-array name="round_array">
-        <item>5.00</item>
-        <item>1.00</item>
         <item>0.50</item>
+        <item>1.00</item>
+        <item>5.00</item>
     </string-array>
 </resources>
