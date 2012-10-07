@@ -2,4 +2,19 @@
 <resources>
     <string name="hello">Hello World, FlawlessTipActivity!</string>
     <string name="app_name">FlawlessTip</string>
+    <string name="appname">Flawless Tip</string>
+    <string name="amount_label">Amount:</string>
+    
+    <string-array name="tip_array">
+        <item>10%</item>
+        <item>15%</item>
+        <item>17%</item>
+        <item>20%</item>
+    </string-array>
+    
+    <string-array name="round_array">
+        <item>5.00</item>
+        <item>1.00</item>
+        <item>0.50</item>
+    </string-array>
 </resources>
