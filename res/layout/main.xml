@@ -2,6 +2,7 @@
 
 <RelativeLayout 
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:screenOrientation="portrait"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent">
 
@@ -25,7 +26,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="35dp"
 				android:textColor="#FFFFFF"
@@ -59,7 +60,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="15dp"
 				android:textColor="#999999"
@@ -67,7 +68,7 @@
 			<Spinner 
 				android:id="@+id/tip_percentage" 
 				android:layout_height="wrap_content" 
-				android:layout_width="100dp" 
+				android:layout_width="110dp" 
 				android:layout_alignParentRight="true" 
 			></Spinner>
 		</RelativeLayout>
@@ -88,7 +89,7 @@
 				android:layout_centerVertical="true"
 				android:layout_alignParentLeft="true"
 				
-				android:paddingLeft="10dp"
+				android:paddingLeft="5dp"
 				
 				android:textSize="15dp"
 				android:textColor="#999999"
@@ -96,7 +97,36 @@
 			<Spinner 
 				android:id="@+id/round_amount" 
 				android:layout_height="wrap_content" 
-				android:layout_width="100dp" 
+				android:layout_width="110dp" 
+				android:layout_alignParentRight="true" 
+			></Spinner>
+		</RelativeLayout>
+		
+		<!-- Round Direction -->
+		<RelativeLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" 
+			android:layout_alignParentRight="true" 
+			android:gravity="left">
+			<TextView
+				android:text="Round Direction" 
+
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="center" 
+				android:layout_centerVertical="true"
+				android:layout_alignParentLeft="true"
+				
+				android:paddingLeft="5dp"
+				
+				android:textSize="15dp"
+				android:textColor="#999999"
+			></TextView>
+			<Spinner 
+				android:id="@+id/round_direction" 
+				android:layout_height="wrap_content" 
+				android:layout_width="110dp" 
 				android:layout_alignParentRight="true" 
 			></Spinner>
 		</RelativeLayout>
