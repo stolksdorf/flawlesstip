@@ -26,4 +26,10 @@
         <item>1.00</item>
         <item>5.00</item>
     </string-array>
+    
+    <string-array name="roundDirection_array">
+        <item>Best</item>
+        <item>Up</item>
+        <item>Down</item>
+    </string-array>
 </resources>

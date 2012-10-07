@@ -9,6 +9,7 @@ package com.stolksdorf.flawlesstip;
 
 public final class R {
     public static final class array {
+        public static final int roundDirection_array=0x7f050003;
         public static final int round_array=0x7f050002;
         public static final int tipValue_array=0x7f050000;
         public static final int tip_array=0x7f050001;
@@ -20,10 +21,11 @@ public final class R {
     }
     public static final class id {
         public static final int cost=0x7f060000;
-        public static final int final_cost=0x7f060004;
-        public static final int final_tip_amount=0x7f060005;
-        public static final int final_tip_percentage=0x7f060003;
+        public static final int final_cost=0x7f060005;
+        public static final int final_tip_amount=0x7f060006;
+        public static final int final_tip_percentage=0x7f060004;
         public static final int round_amount=0x7f060002;
+        public static final int round_direction=0x7f060003;
         public static final int tip_percentage=0x7f060001;
     }
     public static final class layout {

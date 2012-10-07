@@ -19,6 +19,7 @@ public class FlawlessTipActivity extends Activity {
 	EditText cost_textbox;
 	Spinner tip_spinner;
 	Spinner amount_spinner;
+	Spinner direction_spinner;
 	
 	TextView final_tip_percentage;
 	TextView final_cost ;
@@ -79,6 +80,21 @@ public class FlawlessTipActivity extends Activity {
 				updateLayout();				
 			}
 		});
+		 
+		//Direction Spinner Events
+		direction_spinner = (Spinner) findViewById(R.id.round_direction);
+		ArrayAdapter<CharSequence> directionAdapter = ArrayAdapter.createFromResource(this,
+		         R.array.roundDirection_array, android.R.layout.simple_spinner_item);
+		directionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		direction_spinner.setAdapter(directionAdapter);
+		direction_spinner.setSelection(0);
+		direction_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		    public void onNothingSelected(AdapterView<?> parent) {}
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2, long arg3) {
+				updateLayout();				
+			}
+		});
 	}
 	
 	
@@ -95,9 +111,16 @@ public class FlawlessTipActivity extends Activity {
 	public float getRoundAmount(){
 		return Float.parseFloat(amount_spinner.getSelectedItem().toString());
 	}
-	
-	public float roundToBest(float value, float target){
-		return (float)(Math.round(value/ target) * target);
+		
+	public float roundTo(float value, float target){
+		int choicePos = direction_spinner.getSelectedItemPosition();
+		if(choicePos == 1){
+			return (float)(Math.ceil(value/ target) * target);
+		}else if(choicePos == 2){
+			Log.d("FLAWLESSTIP","IN HURR");
+			return (float)(Math.floor(value/ target) * target);
+		}
+		return (float)(Math.round(value/ target) * target);		
 	}
 	
 	
@@ -111,7 +134,7 @@ public class FlawlessTipActivity extends Activity {
 			 float tipPercentage = getTipPercentage();
 			 float cost = getCost();
 			 
-			 float totalRounded = roundToBest(cost * (1 + tipPercentage), roundAmount);
+			 float totalRounded = roundTo(cost * (1 + tipPercentage), roundAmount);
 			 float finalTipPercentage = (totalRounded / cost - 1)*100;
 			 float finalTipAmount = totalRounded - cost;
 			 
