@@ -1,12 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content">
+
+		<!-- Cost -->
+		<RelativeLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" 
+			android:layout_alignParentRight="true" 
+			android:gravity="left">
+			<TextView
+				android:text="Cost" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="center" 
+				android:layout_centerVertical="true"
+				android:layout_alignParentLeft="true"
+				
+				android:paddingLeft="10dp"
+				
+				android:textSize="35dp"
+				android:textColor="#FFFFFF"
+			></TextView>
+			<EditText 
+				android:layout_width="wrap_content" 
+				android:id="@+id/cost" 
+				android:inputType="numberDecimal" 
+				android:layout_height="wrap_content" 
+				android:layout_alignParentRight="true" 
+				android:width="180dp"
+				android:textSize="50dp"
+			></EditText>
+		</RelativeLayout>
+		
+		<!-- Tip Percentage -->
+		<RelativeLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" 
+			android:layout_alignParentRight="true" 
+			android:gravity="left"
+			android:paddingTop="30dp"
+			>
+			<TextView
+				android:text="Tip Percentage" 
+
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="center" 
+				android:layout_centerVertical="true"
+				android:layout_alignParentLeft="true"
+				
+				android:paddingLeft="10dp"
+				
+				android:textSize="15dp"
+				android:textColor="#999999"
+			></TextView>
+			<Spinner 
+				android:id="@+id/tip_percentage" 
+				android:layout_height="wrap_content" 
+				android:layout_width="100dp" 
+				android:layout_alignParentRight="true" 
+			></Spinner>
+		</RelativeLayout>
+		
+		<!-- Round Amount -->
+		<RelativeLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true" 
+			android:layout_alignParentRight="true" 
+			android:gravity="left">
+			<TextView
+				android:text="Round Amount" 
+
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:gravity="center" 
+				android:layout_centerVertical="true"
+				android:layout_alignParentLeft="true"
+				
+				android:paddingLeft="10dp"
+				
+				android:textSize="15dp"
+				android:textColor="#999999"
+			></TextView>
+			<Spinner 
+				android:id="@+id/round_amount" 
+				android:layout_height="wrap_content" 
+				android:layout_width="100dp" 
+				android:layout_alignParentRight="true" 
+			></Spinner>
+		</RelativeLayout>
+	</LinearLayout>
+
+	<!-- Lower Part -->
+	<RelativeLayout 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:gravity = "bottom"
+		>
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			>
+			<!-- Title Bar -->
+			<TextView 
+				android:text="Tip Amount"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:gravity="left" 
+				
+				android:paddingLeft="10dp"
+				
+				android:textSize="20dp"
+				android:textColor="#999999"
+			></TextView>
+			<View
+				android:layout_width="fill_parent"
+				android:layout_height="1dp"
+				android:paddingBottom="10dp"
+				android:background="@android:color/darker_gray"
+			/>
+
+			<!-- Tip Feedback -->
+			<LinearLayout 
+				android:orientation="horizontal"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true" 
+				android:layout_alignParentRight="true" 
+				android:paddingTop="10dp"
+				android:gravity="left">
+				<TextView 
+					android:text="15.71%"
+					android:id="@+id/final_tip_percentage"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:gravity="left" 
+					
+					android:paddingLeft="15dp"
+					android:paddingRight="15dp"
+					
+					android:textSize="35dp"
+					android:textColor="#FFFFFF"	
+				></TextView>
+				<TextView 
+					android:text="of" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:gravity="left" 
+					
+					android:textSize="20dp"
+					android:textColor="#999999"
+				></TextView>
+				<TextView 
+					android:text="$75.00"
+					android:id="@+id/final_cost"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:gravity="left" 
+					
+					android:paddingLeft="15dp"
+					
+					android:textSize="35dp"
+					android:textColor="#FFFFFF"
+				></TextView>
+			</LinearLayout>
+			
+			<!-- Big value at the end -->
+			<TextView
+				android:text="$10.18"
+				android:id="@+id/final_tip_amount"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" 
+				android:gravity="right"
+				android:layout_alignParentBottom="true"
+				
+				android:paddingLeft="15dp"
+				android:paddingRight="15dp"
+				
+				android:textSize="75dp"
+				android:textColor="#FFFFFF"
+			></TextView>
+		</LinearLayout>
+	</RelativeLayout>
+</RelativeLayout>
