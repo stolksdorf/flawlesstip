@@ -4,6 +4,7 @@
     <string name="app_name">FlawlessTip</string>
     <string name="appname">Flawless Tip</string>
     <string name="amount_label">Amount:</string>
+    <string name="tip_title">Select Tip Percentage</string>
     
     <string-array name="tip_array">
         <item>10%</item>
